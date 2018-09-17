@@ -1,66 +1,68 @@
-Getting started guide
-=====================
+Стартовый гайд
+==============
 
-You should start with instalation process but let me postpone that.
+Вам стоит начать с установки, но я пожалуй отложу это.
 
-Instalation process
-===================
+Процесс установки
+=================
 
-some stuff
+Здесь должен быть описан процес установки.
 
-Quick language guide
-====================
+Быстрый гайд
+============
 
-Variables
-^^^^^^^^^
+Переменные
+^^^^^^^^^^
 
-First thing first. You need to get into this specific syntax::
+Вам нужно вникнуться в специфический синтаксис::
 
     10 >> age;
     # age = 10
     5. >> double value;
     # value = 5.0
 
-Here i created 2 variables "age" and "value"
-In this case "age" is dynamic so you can probably change it's value(including type) and the "value" is created with static type "double" so you can't change "value"'s type later.
+Здесь я создал 2 переменные "age" и "value".
+В данном случае "age" динамическая, это значит что вы можете менять и значение и тип, и "value" создана со статическим типом "double" - вы можете менять только значение, но не тип.
 
-Also you can use "<<" but it has only 1 time, e.g.::
+Также вы можете использовать "<<", но нельзя делать вложения. Например::
 
     age << 10;
     # age = 10
     return << age;
 
-Complex example
-^^^^^^^^^^^^^^^
+Сложный пример 
+^^^^^^^^^^^^^^
 
-That's how it looks.
-Sounds not interesting at all? I have a much more complicated statement::
+Вот как это выглядит.
+Не интересно скажете Вы? У меня есть пример гораздо сложнее::
 
     example(10), 10 >> example{1}, var, example(10) >> sum{3} >> age >> out;
 
-Here i have some functions and a bit complex stuff but you will get into it very fast.
+Здесь есть немного функций и слегка сложная конструкция, но Вы разберетесь в этом очень и очень быстро.
 
-Importing
-^^^^^^^^^
+Импорт
+^^^^^^
 
-Also some stuff like importing modules::
+Вот примеры импортов модулей::
 
     import IO
 
-    # or
+    # Импрот всего модуля
 
     from IO{
         import func out(int val):void
     }
 
-    # or
+    # Импорт опреденных функций из модуля
 
     import func printf(string a, b):int32
 
-Functions
-^^^^^^^^^
+    # Импорт встроенных функций
 
-Also you can create some functions::
+Функции
+^^^^^^^
+
+Вы также можете создавать функции::
 
     func calc(int a, int b){
         a + b >> return;
@@ -70,66 +72,68 @@ Also you can create some functions::
         a*1.5 >> return;
     }
 
-Here you have 2 functions.
-There is a strange thing after "func example(double a)". ":double" means return type. By default every function returns void(nothing) and if you haven't specified return type yet, then function will detect it by itself. (specifying return type is important when you want to use recursion).
+Здесь 2 функции.
+Тут есть очень странная вещь после "func example(double a)". ":double" означет тип возврата. По умолчанию каждая функция возвращает "void" и если вы не указали тип возврата, функция сама определит его сам по себе. (Обьявление типа возврата важно при рекурсии).
 
-Complex "putting"
-^^^^^^^^^^^^^^^^^
+Усложненное "складывание"
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here appears interesting syntax
+А вот и тот самый интересный синтаксис.
 
-You can "put" values into function::
+Вы можете "складывать" значения в функции::
 
     10, 5 >> calc{2} >> int some;
     # some = 15
 
-Let's postpone "{2}" for now.
+Что такое "{2}" я обьясню позже.
 
-Now i'll explain how COMMA works in that context::
+Сейчас я обьясню как работает "," в данном контексте::
 
     10, 20 >> int a, b;
     # a = 10
     # b = 20
 
-Here you see that first element from left is putted into first of right, 2nd in 2nd and so on.
+Тут Вы можете увидеть что первый елемент слева ушел в первую переменную справа, 2-ая в 2-ую и т.д.
 
-Lets look at this example
-::
+Давайте посмотрим на этот пример::
 
     10, 20 >> calc{2} >> out; # out is imported from IO
     # 30
 
-That "{2}" made for overloading compability. That means, when you are calling function in "put" context compiler can't find out which number of arguments you are "putting" to function. So "{2}" means that compiler must search for function with exactly 2 arguments.
-Btw, if no "{}" provided, then compiler searches for function with 1 param.
+Здесь "{2}" сделано для функции "перегрузки". Это означет, что когда вы вызываете функцию в контексте ">>" компилятор не знает какое количество аргументов Вы отправляете в функцию. Так вот, "{2}" означет что компилятор будет искать функцию с 2-мя параметрами.
+
+Кстати, если Вы не указали "{}", то компилятор будет искать функцю с одним аргументом.
     
-Also you can call function like this::
+Еще можно вызывать функцию вот так::
 
     calc(10, 20) >> out;
     # 30
 
-Extending "put" context
-^^^^^^^^^^^^^^^^^^^^^^^
+Разширение ">>" контекста
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Also you can add new arguments to your "put" context e.g.::
+Also you can add new arguments to your "put" context e.g.
+Вы можете добавлять аргументы с каждым ">>", например::
 
     10, 20 >> calc{2}, calc(10, 20) >> calc{2} >> out;
     # 60
 
-Casting to types
+Обращение к типу
 ^^^^^^^^^^^^^^^^
 
-you can cast variable to type::
+Вы можете обащать переменные к типу::
 
-    age|&int8;
-    # age is casted to *int8;
+    age|double >> out;
+    # age выведется с типом double;
 
 
-If statements
-^^^^^^^^^^^^^
+Условия
+^^^^^^^
 
-To run code ahead you should import IO lib (as i have mentioned before).
+To run code ahead you should import IO lib (as i have mentioned before)
+Вы должны импортнуть модуль IO(как я показывал до этого).
 
-Ifs::
+::
 
     if (10 == 10){
         10 >> out;
@@ -139,7 +143,7 @@ Ifs::
         30 >> out;
     }
 
-    # or
+    # Или
 
     if (10 == 10):
         10 >> out;
@@ -149,10 +153,11 @@ Ifs::
         30 >> out;
     endif
 
-Loops
+Цыклы
 ^^^^^
 
-I have prepeared some different loops e.g.::
+I have prepeared some different loops e.g.
+Я приготовил несколько "разных" цыклов::
 
     for(0 >> int a; a <= 10; a+1>>a;){
         a >> out;
@@ -165,8 +170,8 @@ I have prepeared some different loops e.g.::
     }
 
 
-Next steps
-==========
+Следующие шаги
+==============
 
 .. toctree::
     :maxdepth: 2

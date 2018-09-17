@@ -1,17 +1,17 @@
-Welcome to LearexLanguage's documentation!
-==========================================
+Добро пожаловать в документацию к Learex
+========================================
 
-Introduction
-============
+Введение
+========
 
-Learex is a new oop language(oop comes in future releases) with easy and powerful syntax at the same time.
+Learex - новый язык ООП(ООП будет реализовано в след. релизах) с легким и одновременно мощным синтаксисом. 
 
-It's built on the top of LLVM and gives an access to huge speed.
+Он основывается на LLVM что позволяет выполнять код очень быстро.
 
-If you are wondering about it's syntax then go ahead and look at Getting Started
+Если стало интересно то прочитайте "Старт".
 
-Getting Started
-^^^^^^^^^^^^^^^
+Старт
+^^^^^
 
 .. toctree::
     :maxdepth: 1

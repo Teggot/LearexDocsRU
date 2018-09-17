@@ -1,43 +1,43 @@
-Advanced steps
-==============
+Сложные вещи
+============
 
-Expanding operators' behaviours
+Добваление поведения операторам
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Also you can expand language by defining new behaviour of operators "+","-","*","/".
+Можно разширять язык добавляя поведения операторам "+","-","*","/".
 
-To create new behaviour you can just create new function with name "plus", "minus", "multy", "division" relatively.::
+Что бы это сделать надо просто реализовать функцию с именем "plus", "minus", "mul", "div" соответсвенно::
 
     func plus(int a, double b):double{
         a|double + b >> return;
     }
 
-And so on.
-This may be useful to create behaviour of operators when you want to get sum of your Classes.
+И так далее.
+Это может быть полезно для реализации сложения(и остального) новых классов.
 
-Also you have an access to builtin low-level operators::
+Также я даю доступ к встроенным низкоуровневым операторам::
     
-    _+ # for adding integers
-    _++ # for adding floats
-    _- # for substracting integers
+    _+ # для сложения целых чисел
+    _++ # для сложения вещественных чисел
+    _- # для вычитания целых чисел
     ...
 
-Pointers
-^^^^^^^^
+Указатели
+^^^^^^^^^
 
-Pointer is "&".
+Укзатель выглядит так : "&".
 
-If you came from c-type languages then you should be familiar with pointers.
-Learex provides ability to get pointers to types and pointers to variables address.::
+Если Вы пришли из языков семейства С, то Вы должны быть знакомы с ними.
+Learex позволяет получить указатели на типы и указатели на переменные.::
 
     func calc(&int8 a){
         return << #operations with a#;
     }
 
-There is a builtin "scanf" function which asks for pointer to the variable.::
+Существует встроенная функция "scanf" которая принимает указатель на переменную::
 
     0 >> age;
     scanf("%i", &age);
     age >> out;
-    # here will be your inputted integer
+    # здесь будет ваше введенное число
  
